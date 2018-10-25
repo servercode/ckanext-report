@@ -168,6 +168,8 @@ def make_csv_from_dicts(rows):
                 item = unicode(item)
             elif item is None:
                 item = ''
+            elif isinstance(item, (dict, list, OrderedDict)):
+                item = json.dumps(item)
             else:
                 item = item.encode('utf8')
             items.append(item)
